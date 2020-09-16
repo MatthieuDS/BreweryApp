@@ -65,7 +65,7 @@ namespace BreweryApp.Controllers
             }
             catch (NotEnoughStockException ex)
             {
-                return BadRequest($"Beer {string.Join(",", ex.BeerId)} has not enough stock.");
+                return BadRequest($"Beer {string.Join(",", ex.BeerId)} has not enough stock (current stock: {ex.CurrentStock}).");
             }
             catch (WholesalerNotFoundException)
             {

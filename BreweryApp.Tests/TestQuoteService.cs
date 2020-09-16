@@ -339,7 +339,7 @@ namespace BreweryApp.Tests
             var resultQuote = await service.GetQuote(quote);
 
 
-            Assert.AreEqual((beerPrice * beerRequested * 0.9M), resultQuote.Price);
+            Assert.AreEqual(7.96M, resultQuote.Price);
         }
 
         [TestMethod]
@@ -389,7 +389,7 @@ namespace BreweryApp.Tests
             var resultQuote = await service.GetQuote(quote);
 
 
-            Assert.AreEqual((beerPrice * beerRequested * 0.9M), resultQuote.Price);
+            Assert.AreEqual(10.62M, resultQuote.Price);
         }
 
 
@@ -439,7 +439,7 @@ namespace BreweryApp.Tests
             var resultQuote = await service.GetQuote(quote);
 
 
-            Assert.AreEqual((beerPrice * beerRequested * 0.8M), resultQuote.Price);
+            Assert.AreEqual(93.93M, resultQuote.Price);
         }
 
 
@@ -515,7 +515,7 @@ namespace BreweryApp.Tests
             var resultQuote = await service.GetQuote(quote);
 
 
-            Assert.AreEqual(((firstBeerPrice * firstBeerCountRequest) + (secondBeerPrice * secondBeerCountRequest)) * 0.8M, resultQuote.Price);
+            Assert.AreEqual(112.30M, resultQuote.Price);
         }
     }
 }

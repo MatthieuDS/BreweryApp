@@ -50,13 +50,13 @@ namespace BreweryApp.Services
             var discountPercentage = 1.0M;
             var totalPrice = 0.0M;
             var requestedBeers = new List<QuoteResultBeer>();
-            if (totalRequestCountBeer > 10 && totalRequestCountBeer <= 20)
-            {
-                discountPercentage = 0.9M;
-            }
-            else if (totalRequestCountBeer > 20)
+            if (totalRequestCountBeer > 20)
             {
                 discountPercentage = 0.8M;
+            }
+            else if (totalRequestCountBeer > 10)
+            {
+                discountPercentage = 0.9M;
             }
 
             foreach (var requestedBeer in requestQuote.Beers)
@@ -79,13 +79,14 @@ namespace BreweryApp.Services
                     RequestedCount = requestedBeer.Count
                 });
 
-                totalPrice += (requestedBeer.Count * wholeSalerStock.Beer.Price) * discountPercentage;
+                totalPrice += requestedBeer.Count * wholeSalerStock.Beer.Price;
             }
 
+            totalPrice = totalPrice * discountPercentage;
 
             return new QuoteResult()
             {
-                Price = totalPrice,
+                Price = Math.Round(totalPrice, 2),
                 Beers = requestedBeers,
                 WholesalerId = wholesaler.Id,
                 WholesalerName = wholesaler.Name
